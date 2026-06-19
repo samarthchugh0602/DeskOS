@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeskOS</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="desktop">
+
+        <!-- Desktop Icons -->
+
+        <div class="desktop-icon" data-open="notes-window">
+            <div class="icon-box">📝</div>
+            <span>Notes</span>
+        </div>
+
+        <div class="desktop-icon" data-open="calc-window">
+            <div class="icon-box">🧮</div>
+            <span>Calculator</span>
+        </div>
+
+        <div class="desktop-icon" data-open="terminal-window">
+            <div class="icon-box">💻</div>
+            <span>Terminal</span>
+        </div>
+
+        <div class="desktop-icon" data-open="weather-window">
+            <div class="icon-box">🌤️</div>
+            <span>Weather</span>
+        </div>
+
+        <!-- NOTES -->
+
+        <div class="window" id="notes-window">
+
+            <div class="window-header">
+                <span>Notes</span>
+
+                <button class="close-btn">✕</button>
+            </div>
+
+            <div class="window-body">
+
+                <textarea
+                    id="notePad"
+                    placeholder="Write anything..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+        <!-- CALCULATOR -->
+
+        <div class="window" id="calc-window">
+
+            <div class="window-header">
+                <span>Calculator</span>
+                <button class="close-btn">✕</button>
+            </div>
+
+            <div class="window-body calc-body">
+
+                <input
+                    type="text"
+                    id="calc-screen"
+                    readonly
+                >
+
+                <div class="calc-grid">
+
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                    <button>/</button>
+
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>*</button>
+
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>-</button>
+
+                    <button>0</button>
+                    <button>.</button>
+                    <button>=</button>
+                    <button>+</button>
+
+                    <button class="wide-btn">C</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TERMINAL -->
+
+        <div class="window" id="terminal-window">
+
+            <div class="window-header">
+                <span>DeskOS Terminal</span>
+                <button class="close-btn">✕</button>
+            </div>
+
+            <div class="window-body terminal-body">
+
+                <div id="terminal-output">
+
+                    <div>DeskOS Terminal v1.0</div>
+                    <div>Type 'help'</div>
+
+                </div>
+
+                <div class="terminal-input-row">
+
+                    <span>$</span>
+
+                    <input
+                        type="text"
+                        id="terminal-input"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- WEATHER -->
+
+        <div class="window" id="weather-window">
+
+            <div class="window-header">
+                <span>Weather</span>
+                <button class="close-btn">✕</button>
+            </div>
+
+            <div class="window-body weather-body">
+
+                <div class="weather-card">
+
+                    <h1 id="temp">29°</h1>
+
+                    <h3 id="sky">Partly Cloudy</h3>
+
+                    <p id="city">Mumbai</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TASKBAR -->
+
+    <div id="taskbar">
+
+        <div id="task-left">
+
+            <button class="task-launch" data-open="notes-window">
+                📝
+            </button>
+
+            <button class="task-launch" data-open="calc-window">
+                🧮
+            </button>
+
+            <button class="task-launch" data-open="terminal-window">
+                💻
+            </button>
+
+            <button class="task-launch" data-open="weather-window">
+                🌤️
+            </button>
+
+        </div>
+
+        <div id="task-clock">
+            00:00
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
