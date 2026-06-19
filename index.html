@@ -3,161 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeskOS</title>
+    <title>DeskOS v2</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div id="desktop">
+<div id="boot-screen">
+    <h1>DeskOS</h1>
+    <p>Loading desktop...</p>
+</div>
 
-        <!-- Desktop Icons -->
+<div id="desktop">
 
-        <div class="desktop-icon" data-open="notes-window">
-            <div class="icon-box">📝</div>
+    <!-- DESKTOP ICONS -->
+
+    <div class="desktop-icon" data-app="explorer">
+        <div class="icon">📁</div>
+        <span>Explorer</span>
+    </div>
+
+    <div class="desktop-icon" data-app="notes">
+        <div class="icon">📝</div>
+        <span>Notes</span>
+    </div>
+
+    <div class="desktop-icon" data-app="terminal">
+        <div class="icon">💻</div>
+        <span>Terminal</span>
+    </div>
+
+    <div class="desktop-icon" data-app="calculator">
+        <div class="icon">🧮</div>
+        <span>Calculator</span>
+    </div>
+
+    <div class="desktop-icon" data-app="settings">
+        <div class="icon">⚙️</div>
+        <span>Settings</span>
+    </div>
+
+    <!-- EXPLORER -->
+
+    <div class="window" id="explorer-window">
+
+        <div class="window-header">
+            <span>File Explorer</span>
+
+            <div class="window-actions">
+                <button class="min-btn">—</button>
+                <button class="max-btn">□</button>
+                <button class="close-btn">✕</button>
+            </div>
+        </div>
+
+        <div class="window-body explorer-body">
+
+            <div class="explorer-sidebar">
+
+                <div class="folder-item">Desktop</div>
+                <div class="folder-item">Projects</div>
+                <div class="folder-item">Pictures</div>
+                <div class="folder-item">Downloads</div>
+
+            </div>
+
+            <div class="explorer-content">
+
+                <h3>Desktop</h3>
+
+                <div id="file-list"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- NOTES -->
+
+    <div class="window" id="notes-window">
+
+        <div class="window-header">
             <span>Notes</span>
-        </div>
 
-        <div class="desktop-icon" data-open="calc-window">
-            <div class="icon-box">🧮</div>
-            <span>Calculator</span>
-        </div>
-
-        <div class="desktop-icon" data-open="terminal-window">
-            <div class="icon-box">💻</div>
-            <span>Terminal</span>
-        </div>
-
-        <div class="desktop-icon" data-open="weather-window">
-            <div class="icon-box">🌤️</div>
-            <span>Weather</span>
-        </div>
-
-        <!-- NOTES -->
-
-        <div class="window" id="notes-window">
-
-            <div class="window-header">
-                <span>Notes</span>
-
+            <div class="window-actions">
+                <button class="min-btn">—</button>
+                <button class="max-btn">□</button>
                 <button class="close-btn">✕</button>
             </div>
+        </div>
 
-            <div class="window-body">
+        <div class="window-body">
 
-                <textarea
-                    id="notePad"
-                    placeholder="Write anything..."
-                ></textarea>
-
-            </div>
+            <textarea
+                id="notes-editor"
+                placeholder="Write something..."
+            ></textarea>
 
         </div>
 
-        <!-- CALCULATOR -->
+    </div>
 
-        <div class="window" id="calc-window">
+    <!-- TERMINAL -->
 
-            <div class="window-header">
-                <span>Calculator</span>
+    <div class="window" id="terminal-window">
+
+        <div class="window-header">
+            <span>DeskShell</span>
+
+            <div class="window-actions">
+                <button class="min-btn">—</button>
+                <button class="max-btn">□</button>
                 <button class="close-btn">✕</button>
             </div>
+        </div>
 
-            <div class="window-body calc-body">
+        <div class="window-body terminal-body">
+
+            <div id="terminal-output">
+
+                <div>DeskShell v2.0</div>
+                <div>Type help for commands</div>
+
+            </div>
+
+            <div class="terminal-row">
+
+                <span>$</span>
 
                 <input
-                    type="text"
-                    id="calc-screen"
-                    readonly
+                    id="terminal-input"
+                    autocomplete="off"
                 >
 
-                <div class="calc-grid">
-
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                    <button>/</button>
-
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button>*</button>
-
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>-</button>
-
-                    <button>0</button>
-                    <button>.</button>
-                    <button>=</button>
-                    <button>+</button>
-
-                    <button class="wide-btn">C</button>
-
-                </div>
-
             </div>
 
         </div>
 
-        <!-- TERMINAL -->
+    </div>
 
-        <div class="window" id="terminal-window">
+    <!-- CALCULATOR -->
 
-            <div class="window-header">
-                <span>DeskOS Terminal</span>
+    <div class="window" id="calculator-window">
+
+        <div class="window-header">
+            <span>Calculator</span>
+
+            <div class="window-actions">
+                <button class="min-btn">—</button>
+                <button class="max-btn">□</button>
                 <button class="close-btn">✕</button>
             </div>
-
-            <div class="window-body terminal-body">
-
-                <div id="terminal-output">
-
-                    <div>DeskOS Terminal v1.0</div>
-                    <div>Type 'help'</div>
-
-                </div>
-
-                <div class="terminal-input-row">
-
-                    <span>$</span>
-
-                    <input
-                        type="text"
-                        id="terminal-input"
-                        autocomplete="off"
-                    >
-
-                </div>
-
-            </div>
-
         </div>
 
-        <!-- WEATHER -->
+        <div class="window-body">
 
-        <div class="window" id="weather-window">
+            <input
+                id="calc-screen"
+                readonly
+            >
 
-            <div class="window-header">
-                <span>Weather</span>
-                <button class="close-btn">✕</button>
-            </div>
+            <div class="calc-grid">
 
-            <div class="window-body weather-body">
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>/</button>
 
-                <div class="weather-card">
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>*</button>
 
-                    <h1 id="temp">29°</h1>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>-</button>
 
-                    <h3 id="sky">Partly Cloudy</h3>
+                <button>0</button>
+                <button>.</button>
+                <button>=</button>
+                <button>+</button>
 
-                    <p id="city">Mumbai</p>
-
-                </div>
+                <button class="clear-btn">C</button>
 
             </div>
 
@@ -165,37 +196,108 @@
 
     </div>
 
-    <!-- TASKBAR -->
+    <!-- SETTINGS -->
 
-    <div id="taskbar">
+    <div class="window" id="settings-window">
 
-        <div id="task-left">
+        <div class="window-header">
+            <span>Settings</span>
 
-            <button class="task-launch" data-open="notes-window">
-                📝
-            </button>
-
-            <button class="task-launch" data-open="calc-window">
-                🧮
-            </button>
-
-            <button class="task-launch" data-open="terminal-window">
-                💻
-            </button>
-
-            <button class="task-launch" data-open="weather-window">
-                🌤️
-            </button>
-
+            <div class="window-actions">
+                <button class="min-btn">—</button>
+                <button class="max-btn">□</button>
+                <button class="close-btn">✕</button>
+            </div>
         </div>
 
-        <div id="task-clock">
-            00:00
+        <div class="window-body">
+
+            <h3>Wallpaper</h3>
+
+            <div class="wallpaper-grid">
+
+                <button
+                    class="wall-btn"
+                    data-wall="aurora"
+                >
+                    Aurora
+                </button>
+
+                <button
+                    class="wall-btn"
+                    data-wall="sunset"
+                >
+                    Sunset
+                </button>
+
+                <button
+                    class="wall-btn"
+                    data-wall="space"
+                >
+                    Space
+                </button>
+
+            </div>
+
         </div>
 
     </div>
 
-    <script src="script.js"></script>
+</div>
+
+<!-- TASKBAR -->
+
+<div id="taskbar">
+
+    <div id="task-left">
+
+        <button
+            class="task-launch"
+            data-app="explorer"
+        >
+            📁
+        </button>
+
+        <button
+            class="task-launch"
+            data-app="notes"
+        >
+            📝
+        </button>
+
+        <button
+            class="task-launch"
+            data-app="terminal"
+        >
+            💻
+        </button>
+
+        <button
+            class="task-launch"
+            data-app="calculator"
+        >
+            🧮
+        </button>
+
+        <button
+            class="task-launch"
+            data-app="settings"
+        >
+            ⚙️
+        </button>
+
+    </div>
+
+    <div id="task-clock">
+        00:00
+    </div>
+
+</div>
+
+<script src="filesystem.js"></script>
+<script src="windows.js"></script>
+<script src="terminal.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
