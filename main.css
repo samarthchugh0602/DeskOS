@@ -1,0 +1,662 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --glass:rgba(255,255,255,.08);
+    --glass-border:rgba(255,255,255,.16);
+
+    --shadow:
+        0 10px 40px rgba(0,0,0,.35);
+
+    --text:#ffffff;
+    --muted:#bfc7d8;
+
+    --radius:18px;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    overflow:hidden;
+    height:100vh;
+    color:var(--text);
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1e293b,
+            #334155
+        );
+
+    background-size:cover;
+    background-position:center;
+}
+
+/* =========================
+   WALLPAPERS
+========================= */
+
+body.wall-aurora{
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1e293b,
+            #2563eb
+        );
+}
+
+body.wall-sunset{
+    background:
+        linear-gradient(
+            135deg,
+            #7c2d12,
+            #ea580c,
+            #fb923c
+        );
+}
+
+body.wall-space{
+    background:
+        linear-gradient(
+            135deg,
+            #020617,
+            #0f172a,
+            #312e81
+        );
+}
+
+/* =========================
+   BOOT SCREEN
+========================= */
+
+#boot-screen{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#05070d;
+
+    z-index:999999;
+
+    transition:.6s;
+}
+
+#boot-screen h1{
+    font-size:4rem;
+    margin-bottom:12px;
+}
+
+#boot-screen p{
+    color:#94a3b8;
+}
+
+#boot-screen.hidden{
+    opacity:0;
+    pointer-events:none;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+#desktop{
+    width:100%;
+    height:100%;
+    position:relative;
+    padding:18px;
+}
+
+.desktop-icon{
+
+    width:90px;
+
+    margin-bottom:16px;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    user-select:none;
+}
+
+.desktop-icon span{
+
+    margin-top:8px;
+
+    font-size:.85rem;
+
+    text-align:center;
+}
+
+.icon{
+
+    width:64px;
+    height:64px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+
+    border-radius:16px;
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    transition:.2s;
+}
+
+.desktop-icon:hover .icon{
+
+    transform:translateY(-4px);
+
+    background:rgba(255,255,255,.15);
+}
+
+/* =========================
+   WINDOWS
+========================= */
+
+.window{
+
+    position:absolute;
+
+    top:90px;
+    left:220px;
+
+    width:700px;
+    height:480px;
+
+    display:none;
+
+    overflow:hidden;
+
+    border-radius:var(--radius);
+
+    background:var(--glass);
+
+    border:1px solid var(--glass-border);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:var(--shadow);
+
+    animation:pop .15s ease;
+}
+
+.window.active{
+    display:block;
+}
+
+.window.maximized{
+
+    top:0 !important;
+    left:0 !important;
+
+    width:100vw !important;
+    height:calc(100vh - 58px) !important;
+
+    border-radius:0;
+}
+
+.window.minimized{
+    display:none;
+}
+
+@keyframes pop{
+
+    from{
+        transform:scale(.95);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.window-header{
+
+    height:48px;
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 14px;
+
+    background:rgba(255,255,255,.05);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    cursor:move;
+}
+
+.window-header span{
+    font-size:.92rem;
+    font-weight:600;
+}
+
+.window-actions{
+
+    display:flex;
+    gap:8px;
+}
+
+.window-actions button{
+
+    width:28px;
+    height:28px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+    transition:.15s;
+}
+
+.window-actions button:hover{
+    background:rgba(255,255,255,.18);
+}
+
+.close-btn:hover{
+    background:#ef4444 !important;
+}
+
+.window-body{
+
+    height:calc(100% - 48px);
+
+    padding:16px;
+}
+
+/* =========================
+   NOTES
+========================= */
+
+#notes-editor{
+
+    width:100%;
+    height:100%;
+
+    border:none;
+    outline:none;
+
+    resize:none;
+
+    border-radius:14px;
+
+    padding:16px;
+
+    color:white;
+
+    font-size:15px;
+
+    background:rgba(0,0,0,.2);
+}
+
+#notes-editor::placeholder{
+    color:#9ca3af;
+}
+
+/* =========================
+   TERMINAL
+========================= */
+
+.terminal-body{
+
+    display:flex;
+    flex-direction:column;
+}
+
+#terminal-output{
+
+    flex:1;
+
+    overflow:auto;
+
+    font-family:monospace;
+
+    line-height:1.7;
+
+    padding-bottom:10px;
+}
+
+#terminal-output div{
+    margin-bottom:3px;
+}
+
+.terminal-row{
+
+    display:flex;
+    gap:8px;
+
+    align-items:center;
+
+    font-family:monospace;
+}
+
+#terminal-input{
+
+    flex:1;
+
+    border:none;
+    outline:none;
+
+    background:transparent;
+
+    color:white;
+
+    font-family:monospace;
+
+    font-size:15px;
+}
+
+/* =========================
+   CALCULATOR
+========================= */
+
+#calc-screen{
+
+    width:100%;
+    height:60px;
+
+    margin-bottom:12px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    text-align:right;
+
+    padding-right:14px;
+
+    font-size:24px;
+
+    color:white;
+
+    background:rgba(0,0,0,.2);
+}
+
+.calc-grid{
+
+    display:grid;
+
+    gap:10px;
+
+    grid-template-columns:
+        repeat(4,1fr);
+}
+
+.calc-grid button{
+
+    height:56px;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:18px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.08);
+
+    transition:.15s;
+}
+
+.calc-grid button:hover{
+
+    transform:translateY(-2px);
+
+    background:rgba(255,255,255,.15);
+}
+
+.clear-btn{
+    grid-column:span 4;
+}
+
+/* =========================
+   EXPLORER
+========================= */
+
+.explorer-body{
+
+    display:flex;
+
+    height:100%;
+}
+
+.explorer-sidebar{
+
+    width:180px;
+
+    border-right:
+        1px solid rgba(255,255,255,.08);
+
+    padding-right:10px;
+}
+
+.folder-item{
+
+    padding:10px;
+
+    border-radius:10px;
+
+    margin-bottom:6px;
+
+    cursor:pointer;
+}
+
+.folder-item:hover{
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+.explorer-content{
+
+    flex:1;
+
+    padding-left:16px;
+}
+
+.explorer-content h3{
+    margin-bottom:16px;
+}
+
+#file-list{
+
+    display:grid;
+
+    gap:10px;
+
+    grid-template-columns:
+        repeat(auto-fill,minmax(140px,1fr));
+}
+
+.file-card{
+
+    padding:14px;
+
+    border-radius:12px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.wallpaper-grid{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:16px;
+}
+
+.wall-btn{
+
+    padding:12px 20px;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:12px;
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+.wall-btn:hover{
+    background:
+        rgba(255,255,255,.15);
+}
+
+/* =========================
+   TASKBAR
+========================= */
+
+#taskbar{
+
+    position:fixed;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 14px;
+
+    backdrop-filter:blur(25px);
+
+    background:
+        rgba(15,23,42,.6);
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+}
+
+#task-left{
+
+    display:flex;
+    gap:8px;
+}
+
+.task-launch{
+
+    width:42px;
+    height:42px;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:10px;
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.08);
+
+    transition:.15s;
+}
+
+.task-launch:hover{
+
+    transform:translateY(-2px);
+
+    background:
+        rgba(255,255,255,.15);
+}
+
+#task-clock{
+
+    font-weight:600;
+
+    color:white;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+
+    border-radius:99px;
+
+    background:
+        rgba(255,255,255,.18);
+}
+
+::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .window{
+
+        width:95%;
+        height:70%;
+
+        left:2.5%;
+    }
+
+    .explorer-sidebar{
+        display:none;
+    }
+}
