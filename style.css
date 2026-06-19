@@ -1,0 +1,451 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --glass:rgba(255,255,255,0.08);
+    --glass-border:rgba(255,255,255,0.18);
+    --shadow:0 10px 40px rgba(0,0,0,0.25);
+    --text:#ffffff;
+    --muted:#cfcfcf;
+    --accent:#7c9cff;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    height:100vh;
+    overflow:hidden;
+    color:var(--text);
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1e293b,
+            #111827
+        );
+}
+
+#desktop{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+
+/* =====================
+   DESKTOP ICONS
+===================== */
+
+.desktop-icon{
+    width:90px;
+    text-align:center;
+    margin:20px;
+    cursor:pointer;
+    user-select:none;
+}
+
+.icon-box{
+    width:64px;
+    height:64px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+
+    border-radius:18px;
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    transition:.25s;
+}
+
+.desktop-icon:hover .icon-box{
+    transform:translateY(-3px);
+}
+
+.desktop-icon span{
+    display:block;
+    margin-top:8px;
+    font-size:13px;
+}
+
+/* =====================
+   WINDOWS
+===================== */
+
+.window{
+    position:absolute;
+
+    top:120px;
+    left:220px;
+
+    width:520px;
+    height:420px;
+
+    display:none;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:var(--glass);
+
+    border:1px solid var(--glass-border);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:var(--shadow);
+
+    animation:windowPop .18s ease;
+}
+
+.window.active{
+    display:block;
+}
+
+@keyframes windowPop{
+    from{
+        transform:scale(.94);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.window-header{
+    height:50px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 18px;
+
+    background:rgba(255,255,255,0.05);
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+
+    cursor:move;
+}
+
+.window-header span{
+    font-weight:600;
+    font-size:14px;
+}
+
+.close-btn{
+    width:32px;
+    height:32px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    transition:.2s;
+}
+
+.close-btn:hover{
+    background:rgba(255,80,80,.6);
+}
+
+.window-body{
+    height:calc(100% - 50px);
+    padding:16px;
+}
+
+/* =====================
+   NOTES
+===================== */
+
+#notePad{
+    width:100%;
+    height:100%;
+
+    resize:none;
+
+    border:none;
+
+    outline:none;
+
+    padding:15px;
+
+    color:white;
+
+    border-radius:14px;
+
+    background:rgba(0,0,0,.18);
+
+    font-size:15px;
+
+    line-height:1.6;
+}
+
+#notePad::placeholder{
+    color:#b8b8b8;
+}
+
+/* =====================
+   CALCULATOR
+===================== */
+
+.calc-body{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+#calc-screen{
+    width:100%;
+    height:60px;
+
+    border:none;
+    outline:none;
+
+    text-align:right;
+
+    padding-right:18px;
+
+    font-size:24px;
+
+    border-radius:14px;
+
+    color:white;
+
+    background:rgba(0,0,0,.22);
+}
+
+.calc-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px;
+}
+
+.calc-grid button{
+    height:55px;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:18px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.08);
+
+    transition:.15s;
+}
+
+.calc-grid button:hover{
+    transform:translateY(-2px);
+
+    background:rgba(255,255,255,.14);
+}
+
+.wide-btn{
+    grid-column:span 4;
+}
+
+/* =====================
+   TERMINAL
+===================== */
+
+.terminal-body{
+    display:flex;
+    flex-direction:column;
+}
+
+#terminal-output{
+    flex:1;
+
+    overflow:auto;
+
+    font-family:monospace;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    padding-bottom:12px;
+}
+
+#terminal-output div{
+    margin-bottom:4px;
+}
+
+.terminal-input-row{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.terminal-input-row span{
+    font-family:monospace;
+}
+
+#terminal-input{
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    color:white;
+
+    font-family:monospace;
+
+    font-size:15px;
+}
+
+/* =====================
+   WEATHER
+===================== */
+
+.weather-body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100%;
+}
+
+.weather-card{
+    text-align:center;
+}
+
+.weather-card h1{
+    font-size:70px;
+    margin-bottom:10px;
+}
+
+.weather-card h3{
+    font-weight:500;
+    margin-bottom:8px;
+}
+
+.weather-card p{
+    color:var(--muted);
+}
+
+/* =====================
+   TASKBAR
+===================== */
+
+#taskbar{
+    position:fixed;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:58px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 15px;
+
+    backdrop-filter:blur(25px);
+
+    background:rgba(20,20,20,.45);
+
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+#task-left{
+    display:flex;
+    gap:8px;
+}
+
+.task-launch{
+    width:42px;
+    height:42px;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:18px;
+
+    transition:.18s;
+}
+
+.task-launch:hover{
+    transform:translateY(-2px);
+
+    background:rgba(255,255,255,.16);
+}
+
+#task-clock{
+    font-weight:600;
+    letter-spacing:.5px;
+}
+
+/* =====================
+   SCROLLBAR
+===================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.2);
+    border-radius:100px;
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media(max-width:700px){
+
+    .window{
+        width:95%;
+        left:2.5%;
+        top:70px;
+        height:70%;
+    }
+
+    .desktop-icon{
+        margin:10px;
+    }
+
+}
