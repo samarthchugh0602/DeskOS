@@ -52,14 +52,6 @@ Open
 - Add accessibility improvements (ARIA attributes, keyboard navigation, focus management).
 - Create an issue and PR template to standardize contributions.
 
-## Project structure (example)
-
-- index.html — entry point
-- src/ — JavaScript source files
-- styles/ or css/ — CSS files
-- assets/ — images and icons
-
-Adjust this section to match your repo's actual layout.
 
 ## Contributing
 
@@ -73,7 +65,7 @@ Please follow the coding style and include tests where possible.
 
 ## License
 
-Specify a license in LICENSE file (e.g., MIT). If you don't have one yet, consider adding `LICENSE`.
+MIT
 
 ## Languages
 
